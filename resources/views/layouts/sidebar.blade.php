@@ -49,6 +49,21 @@
       </a>
     </li>
 
+    <li class="nav-item">
+      <a class="dropdown-item" href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
+        <i class="mdi mdi-logout mr-2 text-primary"></i>   {{ __('Logout') }} </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+
+      <!-- <a class="nav-link" href="{{ url('/fregister') }}">
+        <span class="menu-title">Logout</span>
+        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+      </a> -->
+    </li>
+
     <li class="nav-item sidebar-actions">
       <span class="nav-link">
         <div class="border-bottom">

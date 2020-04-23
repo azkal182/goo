@@ -41,8 +41,23 @@ Route::get('/fregister', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/user', 'crud@index')->name('user');
 Route::get('/voucher', 'crud@voc')->name('voc');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/approval', 'HomeController@approval')->name('approval');
+
+    Route::middleware(['approved'])->group(function () {
+        Route::get('/home', 'HomeController@index')->name('home');
+    });
+
+    Route::middleware(['admin'])->group(function () {
+       Route::get('/users', 'UserController@index')->name('admin.users.index');
+       Route::get('/users/{user_id}/approve', 'UserController@approve')->name('admin.users.approve');
+       Route::get('/users/{user_id}/deactive', 'UserController@deactive')->name('admin.users.deactive');
+
+   });
+});

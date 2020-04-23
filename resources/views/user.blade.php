@@ -20,46 +20,60 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Daftar User</h4>
+          @if (session('message'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('message') }}
+                            </div>
+                        @endif
           <table class="table">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>email</th>
-                <th>Alamat</th>
-                <th>Role</th>
-                <th>Status</th>
-                <th>Action</th>
 
-              </tr>
-            </thead>
-            <tbody>
+            <tr>
+                              <th>User name</th>
+                              <th>Email</th>
+                              <th>Member</th>
 
-                @foreach($liat as $li)
-                <tr>
-                 <td>{{ $li->id }}</td>
-                 <td>{{ $li->name }}</td>
-                 <td>{{ $li->email }}</td>
-                 <td>Cerih</td>
-                 <td>Admin</td>
-
-                 <td><label class="badge badge-danger">Pending</label></td>
-                 <td>
-                   <button type="button" class="btn btn-gradient-primary" name="button"><i class="mdi mdi-check"></i></button>
-
-                   <a href="#"></a>
-                   <a href="#"><i class="mdi mdi-key"></i></a>
-                   <a href="#"><i class="mdi mdi-delete"></i></a>
-
-
-
-                 </td>
-                 </tr>
-                 @endforeach
-
+                              <th>status</th>
+                              <th></th>
+                          </tr>
+                          @forelse ($users as $user)
+                              <tr>
+                                  <td>{{ $user->name }}</td>
+                                  <td>{{ $user->email }}</td>
+                                  <td>
+                                    @if ($user->admin==1)
+                                      admin
+                                    @else
+                                      member
+                                    @endif
+                                  </td>
+                                  <td>@if ($user->approved_at == NULL)
+                                    <label class="badge badge-danger">Pending</label>
+                                  @else
+                                      <label class="badge badge-success">Active</label>
+                                    @endif
+                                </td>
+                                  <td>
+                                    @if ($user->approved_at == NULL)
+                                    <a href="{{ route('admin.users.approve', $user->id) }}"
+                                         class="btn btn-primary btn-sm">Approve</a>
+                                    @else
+                                    <a href="{{ route('admin.users.deactive', $user->id) }}"
+                                         class="btn btn-primary btn-sm">Deactive</a>
+                                      @endif
 
 
-            </tbody>
+                                    <!-- <a href="{{ route('admin.users.approve', $user->id) }}"
+                                         class="btn btn-primary btn-sm">Approve</a></td> -->
+                                       </td>
+                              </tr>
+                              @empty
+                              <tr>
+                                  <td colspan="4">No users found.</td>
+                              </tr>
+                          @endforelse
+
+
+
           </table>
         </div>
       </div>
