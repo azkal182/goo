@@ -26,8 +26,10 @@
                             </div>
                         @endif
           <table class="table">
+            <thead>
 
             <tr>
+                              <th>No</th>
                               <th>User name</th>
                               <th>Email</th>
                               <th>Member</th>
@@ -35,8 +37,11 @@
                               <th>status</th>
                               <th></th>
                           </tr>
+                    </thead>
+                     <tbody>
                           @forelse ($users as $user)
                               <tr>
+                                  <td>{{ $user->id }}</td>
                                   <td>{{ $user->name }}</td>
                                   <td>{{ $user->email }}</td>
                                   <td>
@@ -71,6 +76,7 @@
                                   <td colspan="4">No users found.</td>
                               </tr>
                           @endforelse
+                          </tbody>
 
 
 

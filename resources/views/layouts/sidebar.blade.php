@@ -22,7 +22,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="{{ url('/user') }}">
+      <a class="nav-link" href="{{ url('/users') }}">
         <span class="menu-title">User</span>
         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
       </a>
