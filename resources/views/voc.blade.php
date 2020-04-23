@@ -17,4 +17,45 @@
 
 
 
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Daftar Voucher</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>TKP</th>
+                <th>Voucher</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                @foreach($voc as $li)
+                <tr>
+                 <td>{{ $li->id }}</td>
+                 <td>{{ $li->tkp }}</td>
+                 <td>{{ $li->voucher }}</td>
+                 </tr>
+                 @endforeach
+
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- @foreach($voc as $li)
+  <ul>
+   <li>{{ $li->id }}</li>
+ </ul>
+   @endforeach -->
+
+
+
 @endsection

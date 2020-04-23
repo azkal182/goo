@@ -22,14 +22,14 @@ Route::get('/dashboard', function () {
     return view('layouts.master');
 });
 
-Route::get('/user', function () {
-    return view('user');
-});
+// Route::get('/user', function () {
+//     return view('user');
+// });
 
 
-Route::get('/voucher', function () {
-    return view('voc');
-});
+// Route::get('/voucher', function () {
+//     return view('voc');
+// });
 
 Route::get('/flogin', function () {
     return view('flogin');
@@ -42,3 +42,7 @@ Route::get('/fregister', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/user', 'crud@index')->name('user');
+Route::get('/voucher', 'crud@voc')->name('voc');

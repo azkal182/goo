@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <input type="button" id="btn_get" name="" value="tes">
+
+
+    	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+      <script type="text/javascript">
+      $(document).ready(function(){
+        $("#btn_get").click(function(){
+        //	var data = $('#form-ku').serialize();
+          var data = $('#iget').val();
+          $.ajax({
+            type: 'POST',
+            url: "db.php",
+            data: {data:data},
+            success: function(response) {
+              console.log(response);
+
+
+            }
+          });
+        });
+
+
+        $("#btn_verif").click(function(){
+          var data = $('#iverif').val();
+          $.ajax({
+            type: 'POST',
+            url: "prosesverif.php",
+            data: {data:data},
+            success: function(response) {
+               if(response == false){
+                 swal.fire(
+                   "error!",
+                   "Verifikasi Gagal",
+                   "error"
+                 )
+
+
+
+                 //alert ('oke');
+               } else {
+                 console.log(response);
+                 $('#title-modal').html(response);
+                 $('#empModal').modal('show');
+               }
+
+            }
+          });
+        });
+
+
+        // $("#btnget").click(function(){
+        // 	var data = $('#formku').serialize();
+        // 	$.ajax({
+        // 		type: 'POST',
+        // 		url: "proseslog.php",
+        // 		data: data,
+        // 		success: function(response) {
+        // 			 if(response == "ok"){
+        // 				 alert ('oke');
+        // 			 } else {
+        // 				 alert ('gagal');
+        // 			 }
+        //
+        // 		}
+        // 	});
+        // });
+
+
+      });
+
+      </script>
+  </body>
+</html>

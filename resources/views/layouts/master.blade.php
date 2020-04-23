@@ -8,6 +8,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="admin/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
@@ -20,6 +21,21 @@
     <link rel="shortcut icon" href="admin/assets/images/favicon.png" />
 
     <link rel="stylesheet" href="sweetalert/sweetalert2.min.css">
+
+
+
+
+
+
+
+
+
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+
+
+
   </head>
   <body>
     <div class="container-scroller">
@@ -89,6 +105,8 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+
+
     <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
@@ -99,44 +117,96 @@
     <script src="admin/assets/js/misc.js"></script>
 
     	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
       <script src="sweetalert/sweetalert2.min.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
+
+
+     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
     <script type="text/javascript">
+
+    $(document).ready(function(){
+  $("#myBtn").click(function(){
+     $('#empModal').modal('show');
+  });
+});
+
       $(document).ready(function(){
+
+
+
         $("#btn_getlog").click(function(){
-          			 swal.fire(
+    			var data = $('#iget_log').val();
+
+    			$.ajax({
+    				type: 'POST',
+    				url: "myjs/proseslog.php",
+    				data: {data:data},
+    				success: function(response) {
+    					//console.log(response);
+    					 if(response == false){
+    						 swal.fire(
     				        "error!",
     				        "Gagal Mengirim OTP",
-    				        "error");
-    			//var data = $('#iget_log').val();
+    				        "error"
+    				      )
+    					 } else {
+    						 swal.fire(
 
-    			// $.ajax({
-    			// 	type: 'POST',
-    			// 	url: "proseslog.php",
-    			// 	data: {data:data},
-    			// 	success: function(response) {
-    			// 		//console.log(response);
-    			// 		 if(response == false){
-    			// 			 swal.fire(
-    			// 	        "error!",
-    			// 	        "Gagal Mengirim OTP",
-    			// 	        "error"
-    			// 	      )
-    			// 		 } else {
-    			// 			 swal.fire(
-          //
-    			// 	        "Sccess!",
-    			// 	        "Kode OTP Berhasil dikirim ke = " + data,
-    			// 	        "success"
-    			// 	      )
-    			// 				console.log(response);
-    	    //      }
-    			// 	}
-    			// });
+    				        "Sccess!",
+    				        "Kode OTP Berhasil dikirim ke = " + data,
+    				        "success"
+    				      )
+    							console.log(response);
+    	         }
+    				}
+    			});
     		});
-      });
+
+
+        $("#btn_verlog").click(function(){
+    			var data = $('#iverif_log').val();
+    			$.ajax({
+    				type: 'POST',
+    				url: "myjs/prosesverif.php",
+    				data: {data:data},
+    				success: function(response) {
+    					 if(response == false){
+    						 swal.fire(
+    	 						 "error!",
+    	 						 "Verifikasi Gagal",
+    	 						 "error"
+    	 					 )
+
+
+
+    						 //alert ('oke');
+    					 } else {
+    						 console.log(response);
+    						 $('#title-modal').html(response);
+    	           $('#empModal').modal('show');
+    	         }
+
+    				}
+    			});
+    		});
+
+    });
     </script>
 
 

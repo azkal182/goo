@@ -19,49 +19,46 @@
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Basic Table</h4>
-          <p class="card-description"> Add class <code>.table</code>
-          </p>
+          <h4 class="card-title">Daftar User</h4>
           <table class="table">
             <thead>
               <tr>
                 <th>No</th>
                 <th>Nama</th>
+                <th>email</th>
                 <th>Alamat</th>
+                <th>Role</th>
                 <th>Status</th>
+                <th>Action</th>
+
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Jacob</td>
-                <td>53275531</td>
-                <td>12 May 2017</td>
-                <td><label class="badge badge-danger">Pending</label></td>
-              </tr>
-              <tr>
-                <td>Messsy</td>
-                <td>53275532</td>
-                <td>15 May 2017</td>
-                <td><label class="badge badge-warning">In progress</label></td>
-              </tr>
-              <tr>
-                <td>John</td>
-                <td>53275533</td>
-                <td>14 May 2017</td>
-                <td><label class="badge badge-info">Fixed</label></td>
-              </tr>
-              <tr>
-                <td>Peter</td>
-                <td>53275534</td>
-                <td>16 May 2017</td>
-                <td><label class="badge badge-success">Completed</label></td>
-              </tr>
-              <tr>
-                <td>Dave</td>
-                <td>53275535</td>
-                <td>20 May 2017</td>
-                <td><label class="badge badge-warning">In progress</label></td>
-              </tr>
+
+                @foreach($liat as $li)
+                <tr>
+                 <td>{{ $li->id }}</td>
+                 <td>{{ $li->name }}</td>
+                 <td>{{ $li->email }}</td>
+                 <td>Cerih</td>
+                 <td>Admin</td>
+
+                 <td><label class="badge badge-danger">Pending</label></td>
+                 <td>
+                   <button type="button" class="btn btn-gradient-primary" name="button"><i class="mdi mdi-check"></i></button>
+
+                   <a href="#"></a>
+                   <a href="#"><i class="mdi mdi-key"></i></a>
+                   <a href="#"><i class="mdi mdi-delete"></i></a>
+
+
+
+                 </td>
+                 </tr>
+                 @endforeach
+
+
+
             </tbody>
           </table>
         </div>
@@ -70,5 +67,5 @@
 
   </div>
 
-  
+
 @endsection
