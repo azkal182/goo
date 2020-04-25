@@ -20,13 +20,15 @@
         <i class="mdi mdi-home menu-icon"></i>
       </a>
     </li>
+     @if (Auth::user()->name == 'Admin')
+       <li class="nav-item">
+         <a class="nav-link" href="{{ url('/users') }}">
+           <span class="menu-title">User</span>
+           <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+         </a>
+       </li>
+     @endif
 
-    <li class="nav-item">
-      <a class="nav-link" href="{{ url('/users') }}">
-        <span class="menu-title">User</span>
-        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-      </a>
-    </li>
 
     <li class="nav-item">
       <a class="nav-link" href="{{ url('/voucher') }}">

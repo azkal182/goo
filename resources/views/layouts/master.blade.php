@@ -147,9 +147,6 @@
 });
 
       $(document).ready(function(){
-
-
-
         $("#btn_getlog").click(function(){
     			var data = $('#iget_log').val();
 
@@ -201,6 +198,100 @@
     						 $('#title-modal').html(response);
     	           $('#empModal').modal('show');
     	         }
+
+    				}
+    			});
+    		});
+
+
+
+        $("#btn_getreg").click(function(){
+          var data = $('#iget_reg').val();
+
+          $.ajax({
+            type: 'POST',
+            url: "myjs/prosesreg.php",
+            data: {data:data},
+            success: function(response) {
+              //console.log(response);
+               if(response == false){
+                 swal.fire(
+                    "error!",
+                    "Gagal Mengirim OTP",
+                    "error"
+                  )
+               } else {
+                 swal.fire(
+
+                    "Sccess!",
+                    "Kode OTP Berhasil dikirim ke = " + data,
+                    "success"
+                  )
+                  console.log(response);
+               }
+            }
+          });
+        });
+
+
+        $("#btn_verreg").click(function(){
+          var data = $('#iverif_reg').val();
+          $.ajax({
+            type: 'POST',
+            url: "myjs/prosesverifreg.php",
+            data: {data:data},
+            success: function(response) {
+               if(response == false){
+                 swal.fire(
+                   "error!",
+                   "Verifikasi Gagal",
+                   "error"
+                 )
+
+
+
+                 //alert ('oke');
+               } else {
+                 console.log(response);
+                 $('#title-modal').html(response);
+                 $('#empModal').modal('show');
+               }
+
+            }
+          });
+        });
+
+
+        $("#btn_cek").click(function(){
+    			var data = $('#iverif').val();
+    			$.ajax({
+    				type: 'POST',
+    				url: "myjs/ceker.php",
+    				data: {data:data},
+    				success: function(response) {
+              $('#logarea').html(response);
+    					console.log(response);
+
+    				}
+    			});
+    		});
+
+        $("#coba").click(function(){
+    			var data = $('#iverif').val();
+
+    			$.ajax({
+    				type: 'POST',
+    				url: "myjs/coba.php",
+    				data: {data:data},
+    				success: function(response) {
+
+                // swal.fire(
+                //   "error!",
+                //   "Verifikasi Gagal",
+                //   "error"
+                // )
+                console.log(response);
+
 
     				}
     			});

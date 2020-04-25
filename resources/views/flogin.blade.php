@@ -57,7 +57,7 @@
 	      </div>
 	      <div class="modal-body">
 					<form id="form-ku2" method="post"  action="ssd.html" role="login">
-						<img src="assets/images/gooo.png" class="img-responsive" alt="" />
+						<img src="admin/assets/images/gooo0.png" class="img-responsive" alt="" />
 						<div class="form-group col-md-12">
 				      <!-- <label for="inputState">State</label> -->
 				      <select id="inputState" class="form-control">
@@ -72,6 +72,8 @@
 
 						<input style="width: 45%;" type="button" id="btn_dor" name="" value="DORR" class="btn btn-gradient-primary ">
 						<input style="width: 45%;" type="button" id="btn_cek" name="" value="Cek" class="pull-right btn btn-info">
+            <input style="width: 100%;" type="button" id="coba" name="" value="coba" class="pull-right btn btn-info">
+
 
 
 						<div class="form-group">

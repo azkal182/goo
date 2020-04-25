@@ -24,16 +24,17 @@
           <form class="forms-sample">
             <div class="form-group">
               <label for="exampleInputName1">Nomor</label>
-              <input type="text" class="form-control" id="exampleInputName1" placeholder="+62xxxxx">
+              <input type="text" class="form-control" id="iget_reg" placeholder="+62xxxxx">
             </div>
+
 
             <div class="form-group">
               <label for="exampleInputPassword4">OTP</label>
-              <input type="text" class="form-control" id="exampleInputPassword4" placeholder="OTP">
+              <input type="text" class="form-control" id="iverif_reg" placeholder="OTP">
             </div>
 
-            <button type="submit" class="btn btn-gradient-primary mr-2">Get OTP</button>
-            <button class="btn btn-light">Verifikasi</button>
+            <button id="btn_getreg" type="button" class="btn btn-gradient-primary mr-2">Get OTP</button>
+            <button id="btn_verreg" type="button" class="btn btn-gradient-success">Verifikasi</button>
           </form>
         </div>
       </div>

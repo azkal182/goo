@@ -32,8 +32,8 @@
                               <th>No</th>
                               <th>User name</th>
                               <th>Email</th>
-                              <th>Member</th>
-
+                              <th>Alamat</th>
+                              <th>Role</th>
                               <th>status</th>
                               <th></th>
                           </tr>
@@ -44,6 +44,8 @@
                                   <td>{{ $user->id }}</td>
                                   <td>{{ $user->name }}</td>
                                   <td>{{ $user->email }}</td>
+                                  <td>{{ $user->alamat }}</td>
+
                                   <td>
                                     @if ($user->admin==1)
                                       admin
